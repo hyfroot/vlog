@@ -1,4 +1,4 @@
-package logger
+package vlog
 
 import (
 	"fmt"
