@@ -140,9 +140,7 @@ func (l *Logger) Output(calldepth int, level int, s string) error {
 	l.mu.Lock()
 	defer l.mu.Unlock()
 	if l.flag&(Ltrace|Ldebug|Linfo|Lwarn|Lerror|Lpanic) != 0 {
-		if l.flag&Ltrace != 0 && level < Ltrace {
-			return nil
-		} else if l.flag&Ldebug != 0 && level < Ldebug {
+                if l.flag&Ldebug != 0 && level < Ldebug {
 			return nil
 		} else if l.flag&Linfo != 0 && level < Linfo {
 			return nil
