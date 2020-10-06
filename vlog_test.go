@@ -1,6 +1,6 @@
 package vlog
 
-import "github.com/hyfroot/vlog"
+import "github.com/vgopher/vlog"
 
 // VlogPrintfTest -
 func VlogPrintfTest() {
