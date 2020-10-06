@@ -97,7 +97,7 @@ func (l *Logger) formatHeader(buf *[]byte, t time.Time, file string, line int, l
 		}
 	}
 
-	if l.flag&(Ldebug|Linfo|Lwarn|Lerror|Lpanic) != 0 {
+	if l.flag&(Ltrace|Ldebug|Linfo|Lwarn|Lerror|Lpanic) != 0 {
 		switch level {
 		case Ltrace:
 			*buf = append(*buf, []byte("[TRACE] ")...)
