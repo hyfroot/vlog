@@ -26,6 +26,7 @@ const (
 
 )
 
+//Logger -
 type Logger struct {
 	mu     sync.Mutex // ensures atomic writes; protects the following fields
 	prefix string     // prefix to write at beginning of each line
@@ -36,6 +37,7 @@ type Logger struct {
 
 var std = New(os.Stderr, "", LstdFlags)
 
+//New -
 func New(out io.Writer, prefix string, flag int) *Logger {
 	return &Logger{
 		prefix: prefix,
@@ -140,7 +142,7 @@ func (l *Logger) Output(calldepth int, level int, s string) error {
 	l.mu.Lock()
 	defer l.mu.Unlock()
 	if l.flag&(Ltrace|Ldebug|Linfo|Lwarn|Lerror|Lpanic) != 0 {
-                if l.flag&Ldebug != 0 && level < Ldebug {
+		if l.flag&Ldebug != 0 && level < Ldebug {
 			return nil
 		} else if l.flag&Linfo != 0 && level < Linfo {
 			return nil
